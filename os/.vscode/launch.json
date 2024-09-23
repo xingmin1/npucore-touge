@@ -1,0 +1,14 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+       {
+             "type": "cppdbg",
+             "request": "launch",
+             "name": "Attach to gdbserver",
+             "program": "${workspaceFolder}/target/riscv64gc-unknown-none-elf/debug/os",
+             "miDebuggerServerAddress": "localhost:1234",
+             "miDebuggerPath": "riscv64-unknown-elf-gdb",
+             "cwd": "${workspaceRoot}"
+       }
+    ]
+ }
