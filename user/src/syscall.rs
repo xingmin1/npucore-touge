@@ -73,7 +73,7 @@ const SYSCALL_SHUTDOWN: usize = 501;
 const SYSCALL_CLEAR: usize = 502;
 const SYSCALL_OPEN: usize = 506;
 const SYSCALL_GET_TIME: usize = 1690;
-const SYSCALL_MYCALL: usize = ????;
+const SYSCALL_MYCALL: usize = 6666;
 
 fn syscall(id: usize, args: [usize; 3]) -> isize {
     let mut ret: isize;
