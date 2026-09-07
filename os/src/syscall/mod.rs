@@ -438,7 +438,7 @@ pub fn syscall(syscall_id: usize, args: [usize; 6]) -> isize {
             args[3] as *const u8,
             args[4] as u32,
         ),
-        SYSCALL_MYCALL => ????,
+        SYSCALL_MYCALL => sys_mycall(),
         _ => {
             error!(
                 "Unsupported syscall:{} ({}), calling over arguments:",
