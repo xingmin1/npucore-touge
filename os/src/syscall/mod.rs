@@ -94,7 +94,7 @@ const SYSCALL_SHUTDOWN: usize = 501;
 const SYSCALL_CLEAR: usize = 502;
 const SYSCALL_OPEN: usize = 506; //where?
 const SYSCALL_GET_TIME: usize = 1690; //you mean get time of day by 169?
-const SYSCALL_MYCALL: usize = ????;
+const SYSCALL_MYCALL: usize = 6666;
 
 pub mod errno;
 pub mod fs;
