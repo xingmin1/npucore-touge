@@ -55,5 +55,5 @@ pub fn sleep(period_ms: usize) {
 }
 
 pub fn mycall() -> isize {
-    todo!();
+   sys_mycall()
 }
