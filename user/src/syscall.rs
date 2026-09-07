@@ -150,5 +150,5 @@ pub fn sys_waitpid(pid: isize, exit_code: *mut i32) -> isize {
 }
 
 pub fn sys_mycall() -> isize {
-    todo!();
+    syscall(SYSCALL_MYCALL, [0, 0, 0])
 }
