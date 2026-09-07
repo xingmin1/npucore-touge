@@ -1028,7 +1028,7 @@ pub fn sys_getrusage(who: isize, usage: *mut Rusage) -> isize {
 
 pub fn sys_mycall() -> isize {
     let name: &'static str = "My name is Zhang Jiawen";
-    for c in name {
+    for c in name.chars() {
         console_putchar(c);
     }
     0
