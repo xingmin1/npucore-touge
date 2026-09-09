@@ -9,6 +9,7 @@ DISASM_TMP := target/$(TARGET)/$(MODE)/asm
 FS_IMG := ../user/target/$(TARGET)/$(MODE)/fs.img
 U_FAT32_DIR := ../easy-fs-fuse
 CORE_NUM := 1
+GDB_PORT ?= 1234
 ifeq ($(BOARD), k210)
 	U_FAT32 := /dev/sdc
 else 
@@ -169,13 +170,13 @@ run-k210:
 
 
 monitor:
-	riscv64-unknown-elf-gdb -ex 'file target/riscv64gc-unknown-none-elf/debug/os' -ex 'set arch riscv:rv64' -ex 'target remote localhost:1234'
+	riscv64-unknown-elf-gdb -ex 'file target/riscv64gc-unknown-none-elf/debug/os' -ex 'set arch riscv:rv64' -ex 'target remote 127.0.0.1:$(GDB_PORT)'
 
 gdb:
 	@qemu-system-riscv64 -machine virt -nographic -bios $(BOOTLOADER) -device loader,\
 	file=target/riscv64gc-unknown-none-elf/debug/os,addr=0x80200000 -drive \
 	file=$(U_FAT32),if=none,format=raw,id=x0 \
-	-device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0 -smp threads=$(CORE_NUM) -S -s # file=target/riscv64gc-unknown-none-elf/$(MODE)/os,addr=0x80200000 -drive
+	-device virtio-blk-device,drive=x0,bus=virtio-mmio-bus.0 -smp threads=$(CORE_NUM) -S -gdb tcp:127.0.0.1:$(GDB_PORT) # file=target/riscv64gc-unknown-none-elf/$(MODE)/os,addr=0x80200000 -drive
 
 runsimple:
 	@qemu-system-riscv64 \
